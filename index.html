@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+<style>
+    html {
+        background-image: url(https://c4.wallpaperflare.com/wallpaper/262/774/423/space-stars-nebula-tylercreatesworlds-wallpaper-preview.jpg);
+        background-position: center;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>
+
+<body>
+    <div style="margin-top: 40vh;">
+        <div
+            style="display: flex;padding: 20px;border-radius: 30px; background-color:aquamarine;justify-content: center;width:30%;margin-left: 35%;">
+            <button id="speak" style="padding: 10px;border-radius: 10px;">Click to Speak</button>
+
+        </div>
+    </div>
+    <p id="textarea"
+        style="text-align: center;color: whitesmoke;width: 40%;margin-left: 30%;border: 2px solid whitesmoke;border-radius: 10px;">
+        Your
+        text comes here
+    </p>
+</body>
+
+<script>
+    var speak = document.getElementById('speak');
+    var textarea = document.getElementById('textarea');
+    var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    var recognition = new SpeechRecognition();
+    speak.addEventListener('click', function () {
+        recognition.start();
+        textarea.innerHTML = '...speaking';
+    })
+    recognition.onresult = function (e) {
+        var transcript = e.results[0][0].transcript;
+        textarea.innerHTML = transcript;
+    }
+
+</script>
+
+</html>
